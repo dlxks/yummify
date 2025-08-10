@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react/dist/iconify.js"
-import chefClaudeLogo from "../assets/chef-claude-icon.png"
 
 function Header() {
 
@@ -7,7 +6,7 @@ function Header() {
     <header>
       {/* <img src={chefClaudeLogo} alt="Chef Claude Logo" /> */}
       <Icon icon="streamline-ultimate-color:chef-gear-gloves" width="45" height="45" />
-      <h1>Recipe Maker</h1>
+      <h1>Yummify</h1>
     </header>
   )
 

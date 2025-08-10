@@ -1,4 +1,4 @@
-# Chef Claude - AI Recipe Generator 🍳
+# Yummify - AI Recipe Generator 🍳
 
 An intelligent recipe generator powered by AI that suggests delicious recipes based on the ingredients you have on hand. Built with React and Vite for a fast, modern web experience.
 
@@ -24,7 +24,7 @@ An intelligent recipe generator powered by AI that suggests delicious recipes ba
 1. **Clone the repository**
    ```bash
    git clone [your-repo-url]
-   cd chef-claude
+   cd yummify
    ```
 
 2. **Install dependencies**
@@ -82,7 +82,7 @@ npm run preview
 ## 🏗️ Project Structure
 
 ```
-chef-claude/
+yummify/
 ├── src/
 │   ├── components/
 │   │   ├── Header.jsx          # App header component

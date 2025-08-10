@@ -21,6 +21,8 @@ function Main() {
 
   return (
     <main>
+      <p>Tell us what you’ve got, and we’ll cook up a recipe for you.</p>
+
       <form className="add-ingredient-form" action={addIngredient}>
         <input
           type="text"
