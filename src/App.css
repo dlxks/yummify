@@ -18,8 +18,8 @@ header {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
 
-header>img {
-  width: 50px;
+header>.chef-logo {
+  color: #D17557;
 }
 
 header>h1 {
