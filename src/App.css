@@ -104,6 +104,8 @@ ul.ingredients-list>li {
   line-height: 28px;
   border-bottom: 2px solid #000000;
   padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 ul.ingredients-list>li:last-child {

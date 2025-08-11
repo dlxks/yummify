@@ -20,6 +20,12 @@ function Main() {
     setIngredients(prevIngredients => [...prevIngredients, newIngredient])
   }
 
+  const removeIngredient = (index) => {
+    setIngredients(prevIngredients => 
+      prevIngredients.filter((_, i) => i !== index)
+    )
+  }
+
   // Scroll into view of recipe once loaded
   useEffect(() => {
     if (recipe && recipeSection.current) {
@@ -44,6 +50,7 @@ function Main() {
         <IngredientsList
           ingredients={ingredients}
           getRecipe={getRecipe}
+          removeIngredient={removeIngredient}
         />
       )}
 
