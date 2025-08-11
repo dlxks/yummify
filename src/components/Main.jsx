@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import IngredientsList from "./IngredientsList";
 import Recipe from "./Recipe";// Main.jsx
 import { getRecipeFromMistral, getRecipeFromChefClaude } from '../ai.js'
@@ -8,6 +8,7 @@ function Main() {
   const [ingredients, setIngredients] = useState([]);
 
   const [recipe, setRecipe] = useState("")
+  const recipeSection = useRef(null) // reference to the recipe section
 
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromMistral(ingredients);
@@ -18,6 +19,13 @@ function Main() {
     const newIngredient = formData.get("ingredient") // get the value of the input field with the name ingredient
     setIngredients(prevIngredients => [...prevIngredients, newIngredient])
   }
+
+  // Scroll into view of recipe once loaded
+  useEffect(() => {
+    if (recipe && recipeSection.current) {
+      recipeSection.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [recipe])
 
   return (
     <main>
@@ -41,11 +49,13 @@ function Main() {
 
       {
         recipe &&
-        <Recipe recipe={recipe} />
+        // Add ref property to the div element
+        <div ref={recipeSection}>
+          <Recipe
+            recipe={recipe}
+          />
+        </div>
       }
-
-
-
     </main>
   )
 
