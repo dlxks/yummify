@@ -2,22 +2,18 @@ import Anthropic from "@anthropic-ai/sdk";
 import { HfInference } from "@huggingface/inference";
 
 const SYSTEM_PROMPT = `
-You are an assistant that receives a list of ingredients that a user has and suggests a recipe...
+You are an assistant that receives a list of ingredients...
 `;
 
-// Check if we're in dev mode
 const isLocal = import.meta.env.DEV;
 
-// SDK clients for local development only
-let anthropic;
-let hf;
+let anthropic, hf;
 
 if (isLocal) {
   anthropic = new Anthropic({
     apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
-    dangerouslyAllowBrowser: true, // ONLY ok for local testing
+    dangerouslyAllowBrowser: true,
   });
-
   hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
 }
 
@@ -38,7 +34,6 @@ async function callApiRoute(ingredientsArr, provider) {
 
 export async function getRecipeFromChefClaude(ingredientsArr) {
   if (isLocal) {
-    // Direct SDK call in dev
     const msg = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",
       max_tokens: 1024,
@@ -52,8 +47,6 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
     });
     return msg.content[0].text;
   }
-
-  // Use API route in production
   return await callApiRoute(ingredientsArr, "claude");
 }
 
@@ -72,6 +65,5 @@ export async function getRecipeFromMistral(ingredientsArr) {
     });
     return response.choices[0].message.content;
   }
-
   return await callApiRoute(ingredientsArr, "mistral");
 }
